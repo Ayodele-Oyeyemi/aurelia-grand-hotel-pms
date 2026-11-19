@@ -1,0 +1,87 @@
+name: Keep-Alive Ping — Aurelia Grand PMS
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Runs every 3 days to prevent Render backend cold-starts and Supabase
+# connection drops. Also available as a manual dispatch for instant pings.
+# ──────────────────────────────────────────────────────────────────────────────
+on:
+  schedule:
+    # Every 72 hours (at midnight UTC on days 1, 4, 7, 10 … of the month)
+    - cron: '0 0 */3 * *'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual ping'
+        required: false
+        default: 'Manual keep-alive trigger'
+
+jobs:
+  ping:
+    name: Ping Render Backend & Supabase
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: 🏨 Ping Render Backend (/api/keep-alive)
+        env:
+          KEEP_ALIVE_URL: ${{ secrets.RENDER_KEEP_ALIVE_URL || 'https://aurelia-grand-hotel-pms.onrender.com/api/keep-alive' }}
+        run: |
+          echo "🔔 Pinging Aurelia Grand PMS backend..."
+          echo "   URL: $KEEP_ALIVE_URL"
+          RESPONSE=$(curl --silent --show-error --max-time 30 \
+            --write-out "\nHTTP_STATUS:%{http_code}" \
+            "$KEEP_ALIVE_URL")
+          HTTP_STATUS=$(echo "$RESPONSE" | grep -o 'HTTP_STATUS:[0-9]*' | cut -d: -f2)
+          BODY=$(echo "$RESPONSE" | sed '/HTTP_STATUS:/d')
+          echo "   HTTP Status : $HTTP_STATUS"
+          echo "   Response    : $BODY"
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "❌ Backend ping failed with HTTP $HTTP_STATUS"
+            exit 1
+          fi
+          echo "✅ Backend is alive — HTTP $HTTP_STATUS"
+
+      - name: 🩺 Ping Render /api/health
+        env:
+          BASE_URL: ${{ secrets.RENDER_BASE_URL || 'https://aurelia-grand-hotel-pms.onrender.com' }}
+        run: |
+          echo "🔔 Pinging /api/health..."
+          RESPONSE=$(curl --silent --show-error --max-time 30 \
+            --write-out "\nHTTP_STATUS:%{http_code}" \
+            "$BASE_URL/api/health")
+          HTTP_STATUS=$(echo "$RESPONSE" | grep -o 'HTTP_STATUS:[0-9]*' | cut -d: -f2)
+          echo "   /api/health HTTP Status: $HTTP_STATUS"
+          echo "✅ Health check complete"
+
+      - name: 🗄️ Ping Supabase REST API (optional — skipped if secret not set)
+        if: ${{ secrets.SUPABASE_URL != '' }}
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          echo "🔔 Pinging Supabase REST endpoint..."
+          RESPONSE=$(curl --silent --show-error --max-time 20 \
+            --write-out "\nHTTP_STATUS:%{http_code}" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            "$SUPABASE_URL/rest/v1/suites?select=id&limit=1")
+          HTTP_STATUS=$(echo "$RESPONSE" | grep -o 'HTTP_STATUS:[0-9]*' | cut -d: -f2)
+          echo "   Supabase HTTP Status: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" -eq 200 ] || [ "$HTTP_STATUS" -eq 206 ]; then
+            echo "✅ Supabase is alive and responding"
+          else
+            echo "⚠️  Supabase returned HTTP $HTTP_STATUS (non-critical — schema may not be applied)"
+          fi
+
+      - name: 📋 Summary
+        if: always()
+        run: |
+          echo ""
+          echo "══════════════════════════════════════════════════"
+          echo "  THE AURELIA GRAND & SUITES — Keep-Alive Report  "
+          echo "══════════════════════════════════════════════════"
+          echo "  Triggered : $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          echo "  Trigger   : ${{ github.event_name }}"
+          ${{ github.event_name == 'workflow_dispatch' && format('echo "  Reason    : {0}"', github.event.inputs.reason) || 'echo "  Reason    : Scheduled cron (every 3 days)"' }}
+          echo "══════════════════════════════════════════════════"
+

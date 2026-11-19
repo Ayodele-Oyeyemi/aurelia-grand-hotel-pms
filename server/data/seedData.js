@@ -1,0 +1,702 @@
+/**
+ * The Aurelia Grand & Suites — Seed Data
+ * Exact match with supabase/seed.sql
+ */
+
+const suites = [
+  // ── AURELIA GARDENS (Wing A) ──────────────────────────────────
+  {
+    id: 'a1000000-0000-0000-0000-000000000001',
+    name: 'Garden Standard Room',
+    slug: 'garden-standard-room',
+    category: 'standard',
+    wing: 'aurelia-gardens',
+    wingLabel: 'Aurelia Gardens',
+    floor: 1, room_number: '101', sqft: 380, base_rate_usd: 120.00, max_guests: 2,
+    amenities: ['Garden View','King Bed','Free WiFi','Flat Screen TV','Mini Fridge','Coffee Maker'],
+    description: 'A serene garden-facing standard room with lush tropical views, king-sized bed, and complimentary breakfast. Perfect for the leisure traveller seeking comfort and calm.',
+    image_url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800',
+    is_active: true, created_at: '2026-11-01T00:00:00Z', updated_at: '2026-11-01T00:00:00Z'
+  },
+  {
+    id: 'a1000000-0000-0000-0000-000000000002',
+    name: 'Garden Classic Room',
+    slug: 'garden-classic-room',
+    category: 'classic',
+    wing: 'aurelia-gardens',
+    wingLabel: 'Aurelia Gardens',
+    floor: 2, room_number: '201', sqft: 480, base_rate_usd: 165.00, max_guests: 2,
+    amenities: ['Pool View','Upgraded Furnishings','Work Desk','Smart TV','Rainfall Shower','Club Lounge Access'],
+    description: 'An upgraded garden retreat with pool-facing views, premium furnishings, and exclusive Club Lounge access. Blending garden tranquility with elevated amenities.',
+    image_url: 'https://images.unsplash.com/photo-1612320648774-0a26f863e55a?w=800',
+    is_active: true, created_at: '2026-11-01T00:00:00Z', updated_at: '2026-11-01T00:00:00Z'
+  },
+  // ── AURELIA HOTEL (Wing B) ────────────────────────────────────
+  {
+    id: 'a1000000-0000-0000-0000-000000000003',
+    name: 'Classic Superior Room',
+    slug: 'classic-superior-room',
+    category: 'superior',
+    wing: 'aurelia-hotel',
+    wingLabel: 'Aurelia Hotel',
+    floor: 5, room_number: '501', sqft: 550, base_rate_usd: 220.00, max_guests: 2,
+    amenities: ['City View','King Bed','Marble Bathroom','Work Desk','Smart Home','Nespresso Machine'],
+    description: 'A sophisticated 550 sq ft superior room in the main hotel tower with sweeping Victoria Island city views and premium Italian marble bathroom.',
+    image_url: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800',
+    is_active: true, created_at: '2026-11-01T00:00:00Z', updated_at: '2026-11-01T00:00:00Z'
+  },
+  {
+    id: 'a1000000-0000-0000-0000-000000000004',
+    name: 'Atlantic Superior Room',
+    slug: 'atlantic-superior-room',
+    category: 'superior',
+    wing: 'aurelia-hotel',
+    wingLabel: 'Aurelia Hotel',
+    floor: 8, room_number: '801', sqft: 620, base_rate_usd: 290.00, max_guests: 2,
+    amenities: ['Atlantic Ocean View','Floor-to-Ceiling Windows','Rain Shower','Pillow Menu','Evening Turndown','Complimentary Breakfast'],
+    description: 'A stunning 620 sq ft oceanfront superior room with floor-to-ceiling windows framing the Atlantic, premium pillow menu, and complimentary breakfast.',
+    image_url: 'https://images.unsplash.com/photo-1590490360182-c33d955e5310?w=800',
+    is_active: true, created_at: '2026-11-01T00:00:00Z', updated_at: '2026-11-01T00:00:00Z'
+  },
+  {
+    id: 'a1000000-0000-0000-0000-000000000005',
+    name: 'Diplomatic Suite',
+    slug: 'diplomatic-suite',
+    category: 'suite',
+    wing: 'aurelia-hotel',
+    wingLabel: 'Aurelia Hotel',
+    floor: 12, room_number: '1201', sqft: 1100, base_rate_usd: 450.00, max_guests: 3,
+    amenities: ['Panoramic City View','Separate Living Room','Boardroom Access','Smart Home','Premium Minibar','Butler on Call'],
+    description: 'A 1,100 sq ft power suite for executives and diplomats, featuring a private boardroom, smart home automation, and 24-hour butler service with Lagos skyline views.',
+    image_url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800',
+    is_active: true, created_at: '2026-11-01T00:00:00Z', updated_at: '2026-11-01T00:00:00Z'
+  },
+  {
+    id: 'a1000000-0000-0000-0000-000000000006',
+    name: 'Presidential Suite',
+    slug: 'presidential-suite',
+    category: 'penthouse',
+    wing: 'aurelia-hotel',
+    wingLabel: 'Aurelia Hotel',
+    floor: 20, room_number: '2001', sqft: 2800, base_rate_usd: 1250.00, max_guests: 4,
+    amenities: ['Ocean View','Private Infinity Pool','Butler Service','Grand Piano','Helipad Access','Wine Cellar'],
+    description: 'The crown jewel of The Aurelia Grand. A sprawling 2,800 sq ft penthouse with 270° Atlantic ocean views, private infinity pool, dedicated butler, and exclusive helipad access.',
+    image_url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800',
+    is_active: true, created_at: '2026-11-01T00:00:00Z', updated_at: '2026-11-01T00:00:00Z'
+  },
+  // ── AURELIA SUITES (Wing C) ───────────────────────────────────
+  {
+    id: 'a1000000-0000-0000-0000-000000000007',
+    name: 'Studio Suite',
+    slug: 'studio-suite',
+    category: 'studio',
+    wing: 'aurelia-suites',
+    wingLabel: 'Aurelia Suites',
+    floor: 3, room_number: '301', sqft: 650, base_rate_usd: 310.00, max_guests: 2,
+    amenities: ['Pool View','Kitchenette','Private Terrace','Daybed','Bluetooth Speaker','Organic Toiletries'],
+    description: 'A smart 650 sq ft studio suite with pool-terrace views, fully fitted kitchenette, and complimentary access to the exclusive Club Lounge.',
+    image_url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800',
+    is_active: true, created_at: '2026-11-01T00:00:00Z', updated_at: '2026-11-01T00:00:00Z'
+  },
+  {
+    id: 'a1000000-0000-0000-0000-000000000008',
+    name: 'Executive Suite',
+    slug: 'executive-suite',
+    category: 'deluxe',
+    wing: 'aurelia-suites',
+    wingLabel: 'Aurelia Suites',
+    floor: 7, room_number: '701', sqft: 950, base_rate_usd: 580.00, max_guests: 2,
+    amenities: ['Lagoon View','Jacuzzi','Separate Living Area','Kitchenette','Fireplace','VIP Concierge'],
+    description: 'A luxurious 950 sq ft executive suite overlooking the Lagos Lagoon with private jacuzzi, cosy fireplace, and dedicated VIP concierge service.',
+    image_url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800',
+    is_active: true, created_at: '2026-11-01T00:00:00Z', updated_at: '2026-11-01T00:00:00Z'
+  }
+];
+
+const guests = [
+  {
+    id: 'b1000000-0000-0000-0000-000000000001',
+    first_name: 'Chidi',
+    last_name: 'Okafor',
+    email: 'chidi.okafor@email.com',
+    phone: '+234-801-555-0101',
+    nationality: 'Nigerian',
+    vip_tier: 'black',
+    notes: 'Black Tier VIP. Prefers ocean-facing suites. Allergic to shellfish.',
+    created_at: '2026-10-15T00:00:00Z',
+    updated_at: '2026-10-15T00:00:00Z'
+  },
+  {
+    id: 'b1000000-0000-0000-0000-000000000002',
+    first_name: 'Aisha',
+    last_name: 'Bello',
+    email: 'aisha.bello@email.com',
+    phone: '+234-802-555-0102',
+    nationality: 'Nigerian',
+    vip_tier: 'platinum',
+    notes: 'Platinum member. Frequent business traveler. Early check-in preferred.',
+    created_at: '2026-10-18T00:00:00Z',
+    updated_at: '2026-10-18T00:00:00Z'
+  },
+  {
+    id: 'b1000000-0000-0000-0000-000000000003',
+    first_name: 'Elena',
+    last_name: 'Müller',
+    email: 'elena.muller@email.com',
+    phone: '+49-170-555-0103',
+    nationality: 'German',
+    vip_tier: 'gold',
+    notes: 'Gold member. Prefers quiet rooms. Requests extra towels.',
+    created_at: '2026-10-20T00:00:00Z',
+    updated_at: '2026-10-20T00:00:00Z'
+  },
+  {
+    id: 'b1000000-0000-0000-0000-000000000004',
+    first_name: 'James',
+    last_name: 'Chen',
+    email: 'james.chen@email.com',
+    phone: '+1-415-555-0104',
+    nationality: 'American',
+    vip_tier: 'platinum',
+    notes: 'Platinum member. Tech CEO. Needs fast WiFi and boardroom access.',
+    created_at: '2026-10-22T00:00:00Z',
+    updated_at: '2026-10-22T00:00:00Z'
+  },
+  {
+    id: 'b1000000-0000-0000-0000-000000000005',
+    first_name: 'Fatima',
+    last_name: 'Al-Rashid',
+    email: 'fatima.alrashid@email.com',
+    phone: '+971-50-555-0105',
+    nationality: 'Emirati',
+    vip_tier: 'black',
+    notes: 'Black Tier VIP. Halal dining required. Travels with private security.',
+    created_at: '2026-10-25T00:00:00Z',
+    updated_at: '2026-10-25T00:00:00Z'
+  },
+  {
+    id: 'b1000000-0000-0000-0000-000000000006',
+    first_name: 'Oluwaseun',
+    last_name: 'Adeyemi',
+    email: 'seun.adeyemi@email.com',
+    phone: '+234-803-555-0106',
+    nationality: 'Nigerian',
+    vip_tier: 'gold',
+    notes: 'Gold member. Honeymoon trip. Requested champagne on arrival.',
+    created_at: '2026-10-28T00:00:00Z',
+    updated_at: '2026-10-28T00:00:00Z'
+  },
+  {
+    id: 'b1000000-0000-0000-0000-000000000007',
+    first_name: 'Sophie',
+    last_name: 'Dubois',
+    email: 'sophie.dubois@email.com',
+    phone: '+33-6-555-0107',
+    nationality: 'French',
+    vip_tier: 'silver',
+    notes: 'Silver member. Travel blogger. May photograph rooms for publication.',
+    created_at: '2026-10-30T00:00:00Z',
+    updated_at: '2026-10-30T00:00:00Z'
+  },
+  {
+    id: 'b1000000-0000-0000-0000-000000000008',
+    first_name: 'Kwame',
+    last_name: 'Asante',
+    email: 'kwame.asante@email.com',
+    phone: '+233-24-555-0108',
+    nationality: 'Ghanaian',
+    vip_tier: 'member',
+    notes: 'New guest. Corporate booking via Dangote Group.',
+    created_at: '2026-11-01T00:00:00Z',
+    updated_at: '2026-11-01T00:00:00Z'
+  }
+];
+
+const reservations = [
+  {
+    id: 'c1000000-0000-0000-0000-000000000001',
+    booking_ref: 'AUR-2026-0001',
+    suite_id: 'a1000000-0000-0000-0000-000000000001',
+    guest_id: 'b1000000-0000-0000-0000-000000000001',
+    check_in: '2026-11-08',
+    check_out: '2026-11-13',
+    nights: 5,
+    guests_count: 2,
+    status: 'checked_in',
+    room_number: '401',
+    nightly_rate: 1250.00,
+    promo_code: null,
+    discount_pct: 0,
+    addons: [
+      { name: 'Airport Chauffeur Pickup', price: 150 },
+      { name: 'Couples Thermal Spa Pass', price: 200 }
+    ],
+    subtotal: 6600.00,
+    tax_amount: 825.00,
+    total_amount: 7425.00,
+    balance_due: 0,
+    channel: 'direct',
+    special_requests: 'Ocean-facing suite. Shellfish-free minibar.',
+    created_at: '2026-11-01T09:00:00Z',
+    updated_at: '2026-11-08T14:00:00Z'
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000002',
+    booking_ref: 'AUR-2026-0002',
+    suite_id: 'a1000000-0000-0000-0000-000000000003',
+    guest_id: 'b1000000-0000-0000-0000-000000000002',
+    check_in: '2026-11-07',
+    check_out: '2026-11-10',
+    nights: 3,
+    guests_count: 1,
+    status: 'checked_in',
+    room_number: '301',
+    nightly_rate: 650.00,
+    promo_code: null,
+    discount_pct: 0,
+    addons: [
+      { name: 'Guaranteed 4 PM Late Check-Out', price: 75 }
+    ],
+    subtotal: 2025.00,
+    tax_amount: 253.13,
+    total_amount: 2278.13,
+    balance_due: 2278.13,
+    channel: 'corporate',
+    special_requests: 'Early check-in at 11 AM if possible.',
+    created_at: '2026-11-02T10:00:00Z',
+    updated_at: '2026-11-07T11:00:00Z'
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000003',
+    booking_ref: 'AUR-2026-0003',
+    suite_id: 'a1000000-0000-0000-0000-000000000004',
+    guest_id: 'b1000000-0000-0000-0000-000000000003',
+    check_in: '2026-11-08',
+    check_out: '2026-11-11',
+    nights: 3,
+    guests_count: 2,
+    status: 'confirmed',
+    room_number: null,
+    nightly_rate: 420.00,
+    promo_code: null,
+    discount_pct: 0,
+    addons: [],
+    subtotal: 1260.00,
+    tax_amount: 157.50,
+    total_amount: 1417.50,
+    balance_due: 1417.50,
+    channel: 'booking_com',
+    special_requests: 'Quiet room away from elevator.',
+    created_at: '2026-11-03T11:15:00Z',
+    updated_at: '2026-11-03T11:15:00Z'
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000004',
+    booking_ref: 'AUR-2026-0004',
+    suite_id: 'a1000000-0000-0000-0000-000000000002',
+    guest_id: 'b1000000-0000-0000-0000-000000000004',
+    check_in: '2026-11-09',
+    check_out: '2026-11-14',
+    nights: 5,
+    guests_count: 1,
+    status: 'confirmed',
+    room_number: null,
+    nightly_rate: 950.00,
+    promo_code: null,
+    discount_pct: 0,
+    addons: [
+      { name: 'Floating Champagne Breakfast', price: 120 }
+    ],
+    subtotal: 4870.00,
+    tax_amount: 608.75,
+    total_amount: 5478.75,
+    balance_due: 5478.75,
+    channel: 'direct',
+    special_requests: 'Need boardroom access for 3-hour meeting.',
+    created_at: '2026-11-04T14:30:00Z',
+    updated_at: '2026-11-04T14:30:00Z'
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000005',
+    booking_ref: 'AUR-2026-0005',
+    suite_id: 'a1000000-0000-0000-0000-000000000001',
+    guest_id: 'b1000000-0000-0000-0000-000000000005',
+    check_in: '2026-11-14',
+    check_out: '2026-11-19',
+    nights: 5,
+    guests_count: 3,
+    status: 'confirmed',
+    room_number: null,
+    nightly_rate: 1250.00,
+    promo_code: null,
+    discount_pct: 0,
+    addons: [
+      { name: 'Airport Chauffeur Pickup', price: 150 },
+      { name: 'Couples Thermal Spa Pass', price: 200 },
+      { name: 'Guaranteed 4 PM Late Check-Out', price: 75 }
+    ],
+    subtotal: 6675.00,
+    tax_amount: 834.38,
+    total_amount: 7509.38,
+    balance_due: 7509.38,
+    channel: 'direct',
+    special_requests: 'Halal dining required. Private security detail (2 persons).',
+    created_at: '2026-11-05T16:00:00Z',
+    updated_at: '2026-11-05T16:00:00Z'
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000006',
+    booking_ref: 'AUR-2026-0006',
+    suite_id: 'a1000000-0000-0000-0000-000000000005',
+    guest_id: 'b1000000-0000-0000-0000-000000000006',
+    check_in: '2026-11-10',
+    check_out: '2026-11-15',
+    nights: 5,
+    guests_count: 2,
+    status: 'confirmed',
+    room_number: null,
+    nightly_rate: 310.00,
+    promo_code: 'DEV20',
+    discount_pct: 20,
+    addons: [
+      { name: 'Floating Champagne Breakfast', price: 120 },
+      { name: 'Couples Thermal Spa Pass', price: 200 }
+    ],
+    subtotal: 1560.00,
+    tax_amount: 195.00,
+    total_amount: 1755.00,
+    balance_due: 1755.00,
+    channel: 'direct',
+    special_requests: 'Honeymoon — champagne and rose petals on arrival.',
+    created_at: '2026-11-06T12:00:00Z',
+    updated_at: '2026-11-06T12:00:00Z'
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000007',
+    booking_ref: 'AUR-2026-0007',
+    suite_id: 'a1000000-0000-0000-0000-000000000006',
+    guest_id: 'b1000000-0000-0000-0000-000000000007',
+    check_in: '2026-11-08',
+    check_out: '2026-11-10',
+    nights: 2,
+    guests_count: 1,
+    status: 'checked_in',
+    room_number: '202',
+    nightly_rate: 220.00,
+    promo_code: null,
+    discount_pct: 0,
+    addons: [],
+    subtotal: 440.00,
+    tax_amount: 55.00,
+    total_amount: 495.00,
+    balance_due: 495.00,
+    channel: 'expedia',
+    special_requests: 'Travel blogger — may photograph room for publication.',
+    created_at: '2026-11-07T08:00:00Z',
+    updated_at: '2026-11-08T15:00:00Z'
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000008',
+    booking_ref: 'AUR-2026-0008',
+    suite_id: 'a1000000-0000-0000-0000-000000000006',
+    guest_id: 'b1000000-0000-0000-0000-000000000008',
+    check_in: '2026-11-11',
+    check_out: '2026-11-13',
+    nights: 2,
+    guests_count: 1,
+    status: 'confirmed',
+    room_number: null,
+    nightly_rate: 220.00,
+    promo_code: null,
+    discount_pct: 0,
+    addons: [],
+    subtotal: 440.00,
+    tax_amount: 55.00,
+    total_amount: 495.00,
+    balance_due: 495.00,
+    channel: 'corporate',
+    special_requests: 'Corporate booking via Dangote Group. Airport pickup arranged separately.',
+    created_at: '2026-11-07T15:00:00Z',
+    updated_at: '2026-11-07T15:00:00Z'
+  }
+];
+
+const folioItems = [
+  {
+    id: 'd1000000-0000-0000-0000-000000000001',
+    reservation_id: 'c1000000-0000-0000-0000-000000000001',
+    category: 'room_charge',
+    description: 'Presidential Ocean Penthouse — Night 1',
+    amount: 1250.00,
+    quantity: 1,
+    is_paid: true,
+    posted_at: '2026-11-08T08:00:00Z'
+  },
+  {
+    id: 'd1000000-0000-0000-0000-000000000002',
+    reservation_id: 'c1000000-0000-0000-0000-000000000001',
+    category: 'room_service',
+    description: 'Wagyu Steak Dinner for 2',
+    amount: 185.00,
+    quantity: 1,
+    is_paid: true,
+    posted_at: '2026-11-08T19:30:00Z'
+  },
+  {
+    id: 'd1000000-0000-0000-0000-000000000003',
+    reservation_id: 'c1000000-0000-0000-0000-000000000001',
+    category: 'minibar',
+    description: 'Dom Pérignon 2012',
+    amount: 320.00,
+    quantity: 1,
+    is_paid: false,
+    posted_at: '2026-11-08T22:15:00Z'
+  },
+  {
+    id: 'd1000000-0000-0000-0000-000000000004',
+    reservation_id: 'c1000000-0000-0000-0000-000000000001',
+    category: 'spa',
+    description: 'Couples Deep Tissue Massage (90 min)',
+    amount: 280.00,
+    quantity: 1,
+    is_paid: false,
+    posted_at: '2026-11-08T16:00:00Z'
+  },
+  {
+    id: 'd1000000-0000-0000-0000-000000000005',
+    reservation_id: 'c1000000-0000-0000-0000-000000000002',
+    category: 'room_charge',
+    description: 'Executive Diplomatic Suite — Night 1',
+    amount: 650.00,
+    quantity: 1,
+    is_paid: false,
+    posted_at: '2026-11-07T14:00:00Z'
+  },
+  {
+    id: 'd1000000-0000-0000-0000-000000000006',
+    reservation_id: 'c1000000-0000-0000-0000-000000000002',
+    category: 'room_service',
+    description: 'Continental Breakfast',
+    amount: 45.00,
+    quantity: 1,
+    is_paid: false,
+    posted_at: '2026-11-08T08:30:00Z'
+  },
+  {
+    id: 'd1000000-0000-0000-0000-000000000007',
+    reservation_id: 'c1000000-0000-0000-0000-000000000002',
+    category: 'laundry',
+    description: 'Express Dry Cleaning — 3 items',
+    amount: 65.00,
+    quantity: 1,
+    is_paid: false,
+    posted_at: '2026-11-08T11:00:00Z'
+  },
+  {
+    id: 'd1000000-0000-0000-0000-000000000008',
+    reservation_id: 'c1000000-0000-0000-0000-000000000007',
+    category: 'room_charge',
+    description: 'Classic Club Studio — Night 1',
+    amount: 220.00,
+    quantity: 1,
+    is_paid: false,
+    posted_at: '2026-11-08T15:00:00Z'
+  },
+  {
+    id: 'd1000000-0000-0000-0000-000000000009',
+    reservation_id: 'c1000000-0000-0000-0000-000000000007',
+    category: 'minibar',
+    description: 'Craft Beer Selection',
+    amount: 24.00,
+    quantity: 3,
+    is_paid: false,
+    posted_at: '2026-11-08T17:45:00Z'
+  }
+];
+
+const housekeepingTasks = [
+  {
+    id: 'e1000000-0000-0000-0000-000000000001',
+    room_number: '101',
+    floor: 1,
+    status: 'clean',
+    attendant: 'Ngozi Eze',
+    priority: 'normal',
+    notes: null,
+    last_cleaned: '2026-11-08T05:00:00Z',
+    updated_at: '2026-11-08T05:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000002',
+    room_number: '102',
+    floor: 1,
+    status: 'clean',
+    attendant: 'Ngozi Eze',
+    priority: 'normal',
+    notes: null,
+    last_cleaned: '2026-11-08T05:30:00Z',
+    updated_at: '2026-11-08T05:30:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000003',
+    room_number: '103',
+    floor: 1,
+    status: 'dirty',
+    attendant: null,
+    priority: 'normal',
+    notes: 'Guest checkout at 11 AM',
+    last_cleaned: null,
+    updated_at: '2026-11-08T05:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000004',
+    room_number: '104',
+    floor: 1,
+    status: 'maintenance',
+    attendant: null,
+    priority: 'high',
+    notes: 'AC unit replacement — ETA 2 days',
+    last_cleaned: null,
+    updated_at: '2026-11-08T05:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000005',
+    room_number: '201',
+    floor: 2,
+    status: 'clean',
+    attendant: 'Blessing Obi',
+    priority: 'normal',
+    notes: null,
+    last_cleaned: '2026-11-08T06:00:00Z',
+    updated_at: '2026-11-08T06:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000006',
+    room_number: '202',
+    floor: 2,
+    status: 'in_progress',
+    attendant: 'Blessing Obi',
+    priority: 'normal',
+    notes: 'Guest checked in — turndown',
+    last_cleaned: null,
+    updated_at: '2026-11-08T06:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000007',
+    room_number: '203',
+    floor: 2,
+    status: 'dirty',
+    attendant: null,
+    priority: 'normal',
+    notes: 'Checkout expected today',
+    last_cleaned: null,
+    updated_at: '2026-11-08T06:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000008',
+    room_number: '204',
+    floor: 2,
+    status: 'clean',
+    attendant: 'Blessing Obi',
+    priority: 'normal',
+    notes: null,
+    last_cleaned: '2026-11-08T06:30:00Z',
+    updated_at: '2026-11-08T06:30:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000009',
+    room_number: '301',
+    floor: 3,
+    status: 'clean',
+    attendant: 'Emeka Nnamdi',
+    priority: 'vip',
+    notes: 'VIP guest — Aisha Bello',
+    last_cleaned: '2026-11-08T04:30:00Z',
+    updated_at: '2026-11-08T04:30:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000010',
+    room_number: '302',
+    floor: 3,
+    status: 'dirty',
+    attendant: null,
+    priority: 'normal',
+    notes: 'Awaiting arrival — Elena Müller',
+    last_cleaned: null,
+    updated_at: '2026-11-08T04:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000011',
+    room_number: '303',
+    floor: 3,
+    status: 'clean',
+    attendant: 'Emeka Nnamdi',
+    priority: 'normal',
+    notes: null,
+    last_cleaned: '2026-11-08T07:00:00Z',
+    updated_at: '2026-11-08T07:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000012',
+    room_number: '304',
+    floor: 3,
+    status: 'maintenance',
+    attendant: null,
+    priority: 'low',
+    notes: 'Bathroom tile grouting',
+    last_cleaned: null,
+    updated_at: '2026-11-08T04:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000013',
+    room_number: '401',
+    floor: 4,
+    status: 'clean',
+    attendant: 'Tunde Bakare',
+    priority: 'vip',
+    notes: 'Black Tier VIP — Chidi Okafor',
+    last_cleaned: '2026-11-08T04:00:00Z',
+    updated_at: '2026-11-08T04:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000014',
+    room_number: '402',
+    floor: 4,
+    status: 'dirty',
+    attendant: null,
+    priority: 'high',
+    notes: 'Deep clean before VIP arrival',
+    last_cleaned: null,
+    updated_at: '2026-11-08T04:00:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000015',
+    room_number: '403',
+    floor: 4,
+    status: 'clean',
+    attendant: 'Tunde Bakare',
+    priority: 'normal',
+    notes: null,
+    last_cleaned: '2026-11-08T07:30:00Z',
+    updated_at: '2026-11-08T07:30:00Z'
+  },
+  {
+    id: 'e1000000-0000-0000-0000-000000000016',
+    room_number: '404',
+    floor: 4,
+    status: 'in_progress',
+    attendant: 'Tunde Bakare',
+    priority: 'normal',
+    notes: 'Restocking minibar',
+    last_cleaned: null,
+    updated_at: '2026-11-08T04:00:00Z'
+  }
+];
+
+module.exports = {
+  suites,
+  guests,
+  reservations,
+  folioItems,
+  housekeepingTasks
+};

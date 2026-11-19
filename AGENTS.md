@@ -1,0 +1,6 @@
+# Project Rules: The Aurelia Grand & Suites (Hotel Booking Engine & PMS)
+- Positioning: An open-source, modular full-stack hospitality template for developers and agencies seeking reusable React booking engines, PMS tape charts, housekeeping matrices, and Supabase schemas.
+- Stack: Monorepo with `/client` (React 18, Vite, Tailwind CSS, Lucide Icons), `/server` (Node.js, Express, CORS, `@supabase/supabase-js`, `@google/genai`), and `/supabase` (`schema.sql` & `seed.sql`).
+- Aesthetic: Five-Star Obsidian & Champagne Gold theme (`#0A0D14` background, `#121722` elevated cards, `#D4AF37` gold accents, serif display headings paired with clean sans-serif UI text).
+- Zero-Crash Hybrid Data Layer: If `SUPABASE_URL` and `SUPABASE_KEY` are absent, automatically run a stateful in-memory engine pre-seeded with realistic suites, guests, folios, and housekeeping logs so all mutations (bookings, check-ins, room status changes) persist live during the session.
+- Deployment Ready: Use `const API_BASE = import.meta.env.VITE_API_URL || '';` for all frontend API calls so local Vite proxy and Vercel/Render deployments work seamlessly.

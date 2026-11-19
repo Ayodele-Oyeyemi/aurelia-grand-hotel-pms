@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ── STATIC BRAND TOKENS (always available as Tailwind utilities) ── */
+@theme {
+  /* Gold accent - same in both themes */
+  --color-gold: #C59B27;
+  --color-gold-hover: #D4AF37;
+  --color-gold-dark: #B48327;
+  --color-gold-light: #F0D060;
+
+  /* Status colors */
+  --color-emerald: #059669;
+  --color-rose: #E11D48;
+  --color-amber: #D97706;
+  --color-slate-muted: #64748B;
+
+  /* Fonts */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── LIGHT THEME (default) ── */
+:root,
+[data-theme="light"] {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-elevated: #FFFFFF;
+  --bg-card: #F8FAFC;
+  --bg-overlay: rgba(248, 250, 252, 0.95);
+  --border-color: #E2E8F0;
+  --border-subtle: #F1F5F9;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --shadow-color: rgba(15, 23, 42, 0.08);
+  --shadow-gold: rgba(197, 155, 39, 0.15);
+  --scrollbar-track: #F1F5F9;
+  --scrollbar-thumb: #CBD5E1;
+  --header-bg: rgba(255, 255, 255, 0.98);
+}
+
+/* ── DARK THEME ── */
+[data-theme="dark"] {
+  --bg-primary: #0A0D14;
+  --bg-secondary: #0D1119;
+  --bg-elevated: #121722;
+  --bg-card: #121722;
+  --bg-overlay: rgba(18, 23, 34, 0.95);
+  --border-color: #1E2433;
+  --border-subtle: #161C2A;
+  --text-primary: #F5F5F5;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-gold: rgba(212, 175, 55, 0.15);
+  --scrollbar-track: #0A0D14;
+  --scrollbar-thumb: #1E2433;
+  --header-bg: rgba(18, 23, 34, 0.98);
+}
+
+/* ── BASE STYLES ── */
+@layer base {
+  * { transition: background-color 0.25s ease, border-color 0.25s ease, color 0.15s ease; }
+  
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-serif-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* ── UTILITY CLASSES using CSS vars (used in components) ── */
+.theme-bg-primary     { background-color: var(--bg-primary); }
+.theme-bg-secondary   { background-color: var(--bg-secondary); }
+.theme-bg-elevated    { background-color: var(--bg-elevated); }
+.theme-bg-card        { background-color: var(--bg-card); }
+.theme-border         { border-color: var(--border-color); }
+.theme-text-primary   { color: var(--text-primary); }
+.theme-text-secondary { color: var(--text-secondary); }
+.theme-text-muted     { color: var(--text-muted); }
+.theme-shadow         { box-shadow: 0 4px 24px var(--shadow-color); }
+.theme-shadow-gold    { box-shadow: 0 4px 24px var(--shadow-gold); }
+
+/* ── SCROLLBARS ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+
+/* ── HERO CAROUSEL ── */
+.hero-slide { animation: fadeSlide 0.6s ease-in-out; }
+@keyframes fadeSlide {
+  from { opacity: 0; transform: scale(1.02); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── LIGHTBOX ── */
+.lightbox-overlay {
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── PRINT (boarding pass confirmation) ── */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: black; }
+}
